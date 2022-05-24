@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1(class="pageTitle")= title
+
+  div(class="filmContainer")
+    each film in film_list
+      div(class="singleFilm")
+        a(href=film.url) 
+          img(class="filmCover" src=film.image_url)
+        a(href=film.url) 
+          h3(class="movieTitle")= film.title
+        div(class="btnContainer")
+          each genre in film.genre
+            button(class="genreBtn")
+              a(href=genre.url) #{genre.name}
+
+    else
+      h4 There are no Movie.

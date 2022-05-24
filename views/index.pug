@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  
+  div(class="background")
+    h1(class="mainTitle")= title
+    p(class="mainSub") Welcome to #[em MovieBox], explore our selection of movie.
+
+  if error
+    p Error getting database content.
+  else
+    div(class="homePage")
+      div(class="homeTitle")
+        h1(class="pageTitle") Featured Movies 
+        hr(class="homeHr")
+        a(class='menuLink' id="homeLink" href="/catalog/films") All Movies 
+          i(class="fa-solid fa-arrow-right")
+      div(class="filmContainer")
+        each film in films
+          div(class="singleFilm")
+            a(href=film.url) 
+              img(class="filmCover" src=film.image_url)
+            a(href=film.url) 
+              h3(class="movieTitle")= film.title
+            div(class="btnContainer")
+              each genre in film.genre
+                button(class="genreBtn")
+                  a(href=genre.url) #{genre.name}
+    div(class="homePage")
+      div(class="homeTitle")
+        h1(class="pageTitle") Featured Director 
+        hr(class="homeHr")
+        a(class='menuLink' id="homeLink" href="/catalog/directors") All Directors 
+          i(class="fa-solid fa-arrow-right")
+      div(class="filmContainer")
+        each director in directors
+          div(class="singleFilm")
+            a(href=director.url) 
+              img(class="filmCover" src=director.image_url)
+            a(href=director.url) 
+              h3(class="movieTitle")= director.name
+

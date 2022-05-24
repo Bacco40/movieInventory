@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1(class="pageTitle") #{title}: #{film.title}
+
+  p(class="error") #[strong  Do you really want to delete this movie?]  
+  form(method='POST' action='')
+    div.form-group
+      input#filmid.form-control(type='hidden',name='filmid', required='true', value=film._id )  
+    button.buttonMenu(type='submit') Delete

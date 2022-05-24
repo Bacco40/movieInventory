@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h1(class="pageTitle")= title
+
+  div(class="filmDetailContainer")
+    if film 
+        img(class="filmCoverBig" src=film.image_url)
+        div(class="filmDetail") 
+            p(class="subTitle") #[strong Summary:] 
+            div(class="summary") #{film.summary}
+            p(class="subTitle") #[strong Realese Date:] 
+            div(class="summary") #{film.release_date_formatted}
+            div(class="singleDetail")
+                p(class="subTitle") #[strong Director:] 
+                div(class="btnContainer2")
+                    each director in film.director
+                        button(class="genreBtn")
+                            a(href=director.url) #{director.name}
+            div(class="singleDetail")
+                p(class="subTitle") #[strong Actor:]
+                div(class="btnContainer2")
+                    each actor in film.starring
+                        button(class="genreBtn")
+                            a(href=actor.url) #{actor.name}
+            div(class="singleDetail")
+                p(class="subTitle") #[strong Genre:]
+                div(class="btnContainer2")
+                    each genre in film.genre
+                        button(class="genreBtn")
+                            a(href=genre.url) #{genre.name}
+            hr
+            div(class="btnDetailContainer")
+                p
+                    a.buttonDelete( href=film.url+'/delete') Delete movie
+                p
+                    a.buttonDelete(href=film.url+'/update') Update movie
+    else
+        h4 This Movie Doesn't Exist.

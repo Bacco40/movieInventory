@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1(class="pageTitle")= title
+
+  div(class="filmDetailContainer")
+    if director 
+        img(class="filmCoverBig" src=director.image_url)
+        div(class="filmDetail") 
+            p(class="subTitle") #[strong Film Directed:]
+            div(class="smallMoviesContainer")
+                each film in director_films
+                    div(class="smallMovie")
+                        a(href=film.url) 
+                            img(class="filmCoverSmall" src=film.image_url)
+                        div(class="smallDetail")
+                            h4(class="smallTitle")= film.title
+                            div(class="summary") #{film.summary}
+            hr
+            div(class="btnDetailContainer")
+                p
+                    a.buttonDelete( href=director.url+'/delete') Delete director
+                p
+                    a.buttonDelete(href=director.url+'/update') Update director
+    else
+        h4 This Director Doesn't Exist.

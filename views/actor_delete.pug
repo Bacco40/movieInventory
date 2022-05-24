@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1(class="pageTitle") #{title}: #{actor.name}
+
+  if actor_films.length
+
+    p(class="error") #[strong Delete the following movies before attempting to delete this actor.]
+    div(class="filmDetailDelete") 
+        p(class="subTitle") #[strong Filmography:]
+        div(class="smallMoviesContainer")
+            each film in actor_films
+                div(class="smallMovie")
+                    a(href=film.url) 
+                        img(class="filmCoverSmall" src=film.image_url)
+                    div(class="smallDetail")
+                        h4(class="smallTitle")= film.title
+                        div(class="summary") #{film.summary}
+
+  else
+    p(class="error") #[strong  Do you really want to delete this actor?]
+
+    form(method='POST' action='')
+      div.form-group
+        input#actorid.form-control(type='hidden',name='actorid', required='true', value=actor._id )
+
+      button.buttonMenu(type='submit') Delete

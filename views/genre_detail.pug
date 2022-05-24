@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1(class="pageTitle")= genre.name 
+
+  if genre_films
+    div(class="filmContainer")
+      each film in genre_films
+        div(class="singleFilm")
+          a(href=film.url) 
+            img(class="filmCover" src=film.image_url)
+          a(href=film.url) 
+            h3(class="movieTitle")= film.title
+          div(class="btnContainer")
+            each genre in film.genre
+              button(class="genreBtn")
+                a(href=genre.url) #{genre.name}
+    hr
+    div(class="btnDetailContainer")
+      p
+        a.buttonDelete( href=genre.url+'/delete') Delete genre
+      p
+        a.buttonDelete(href=genre.url+'/update') Update genre
+  else
+    h4 There are no Movie of this Genre.

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1(class="pageTitle")=title
+
+  form(method='POST' action='')
+    div.formContent
+      label(class="formLabel" for='first_name') First Name:
+      input#first_name.formElement(type='text' placeholder='First name' name='first_name' required='true' value=(undefined===actor ? '' : actor.first_name) )
+      label(class="formLabel" for='surname') Surname:
+      input#surname.formElement(type='text' placeholder='Surname' name='surname' required='true' value=(undefined===actor ? '' : actor.surname))
+      label(class="formLabel" for='image_url') Actor Image URL:
+      input#image_url.formElement(type='text' placeholder='https://googleImage.com/actor.jpg' name='image_url' value=(undefined===actor ? '' : actor.image_url) )
+    if errors
+      for error in errors
+        div(class="error")!= error.msg
+    button.buttonMenu(type='submit') Submit

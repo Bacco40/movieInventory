@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1(class="pageTitle")= title
+
+  div(class="filmContainer")
+    each director in director_list
+      div(class="singleFilm")
+        a(href=director.url) 
+          img(class="filmCover" src=director.image_url)
+        a(href=director.url) 
+          h3(class="movieTitle")= director.name
+        
+
+    else
+      h4 There are no Director.

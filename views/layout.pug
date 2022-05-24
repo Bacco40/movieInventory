@@ -1,0 +1,59 @@
+doctype html
+html(lang='en')
+  head
+    title The Movie Inventory
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    script(src="https://kit.fontawesome.com/25ee9e54cc.js" crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      nav 
+        div(class="logoContainer")
+          i(class="fa-solid fa-tape")
+          h1(class="title") 
+            a(class='homeLink' href="/catalog") MovieBox
+        div(class="searchBox")
+          label(for="search")
+            i(class="fa-solid fa-magnifying-glass")  
+          input(type="text" class="search" placeholder="Search")
+        div(class="menuContainer")
+          input(type="checkbox" class="toggler")
+          div(class="hamburger")
+            div
+          div(class="menu")
+            div
+              div
+                ul
+                  li(class="sectionTitle") - Explore
+                  li
+                    button(class="buttonMenu" id="aboutBtn")
+                      a(class='menuLink' href="/catalog/films") All Movies
+                  li
+                    button(class="buttonMenu" id="aboutBtn")
+                      a(class='menuLink' href="/catalog/directors") All Directors
+                  li
+                    button(class="buttonMenu" id="aboutBtn")
+                      a(class='menuLink' href="/catalog/actors") All Actors
+                  li
+                    button(class="buttonMenu" id="aboutBtn")
+                      a(class='menuLink' href="/catalog/genres") All Genres
+                  li(class="sectionTitle") - Contribute
+                  li
+                    button(class="buttonMenu" id="aboutBtn")
+                      a(class='menuLink' href="/catalog/film/create") Add Movie
+                  li
+                    button(class="buttonMenu" id="aboutBtn")
+                      a(class='menuLink' href="/catalog/director/create") Add Director
+                  li
+                    button(class="buttonMenu" id="aboutBtn")
+                      a(class='menuLink' href="/catalog/actor/create") Add Actor 
+                  li
+                    button(class="buttonMenu" id="aboutBtn")
+                      a(class='menuLink' href="/catalog/genre/create") Add Genre
+    main
+      block content
+    footer 
+      a(href="https://github.com/Bacco40" target="_blank" rel="noreferrer")
+          i(class="fa-brands fa-github" id="gitHub")
+      h4 Copyright © Matteo Bacchetti - The Odin Project 2022 

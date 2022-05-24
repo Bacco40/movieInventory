@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1(class="pageTitle")= title
+
+  div(class="filmContainer")
+    each actor in actor_list
+      div(class="singleFilm")
+        a(href=actor.url) 
+          img(class="filmCover" src=actor.image_url)
+        a(href=actor.url) 
+          h3(class="movieTitle")= actor.name
+        
+
+    else
+      h4 There are no Actor.

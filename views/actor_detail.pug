@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1(class="pageTitle")= title
+
+  div(class="filmDetailContainer")
+    if actor 
+        img(class="filmCoverBig" src=actor.image_url)
+        div(class="filmDetail") 
+            p(class="subTitle") #[strong Filmography:]
+            div(class="smallMoviesContainer")
+                each film in actor_films
+                    div(class="smallMovie")
+                        a(href=film.url) 
+                            img(class="filmCoverSmall" src=film.image_url)
+                        div(class="smallDetail")
+                            h4(class="smallTitle")= film.title
+                            div(class="summary") #{film.summary}
+            hr
+            div(class="btnDetailContainer")
+                p
+                    a.buttonDelete( href=actor.url+'/delete') Delete actor
+                p
+                    a.buttonDelete(href=actor.url+'/update') Update actor
+    else
+        h4 This Actor Doesn't Exist.

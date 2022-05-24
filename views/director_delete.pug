@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1(class="pageTitle") #{title}: #{director.name}
+
+  if director_films.length
+
+    p(class="error") #[strong Delete the following movies before attempting to delete this director.]
+    div(class="filmDetailDelete") 
+        p(class="subTitle") #[strong Film Directed:]
+        div(class="smallMoviesContainer")
+            each film in director_films
+                div(class="smallMovie")
+                    a(href=film.url) 
+                        img(class="filmCoverSmall" src=film.image_url)
+                    div(class="smallDetail")
+                        h4(class="smallTitle")= film.title
+                        div(class="summary") #{film.summary}
+
+  else
+    p(class="error") #[strong  Do you really want to delete this director?]
+
+    form(method='POST' action='')
+      div.form-group
+        input#directorid.form-control(type='hidden',name='directorid', required='true', value=director._id )
+
+      button.buttonMenu(type='submit') Delete

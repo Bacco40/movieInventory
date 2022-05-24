@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1(class="pageTitle")=title
+
+  form(method='POST' action='')
+    div.formContent
+      label(class="formLabel" for='first_name') First Name:
+      input#first_name.formElement(type='text' placeholder='First name' name='first_name' required='true' value=(undefined===director ? '' : director.first_name) )
+      label(class="formLabel" for='surname') Surname:
+      input#surname.formElement(type='text' placeholder='Surname' name='surname' required='true' value=(undefined===director ? '' : director.surname))
+      label(class="formLabel" for='date_of_birth') Date of birth:
+      input#date_of_birth.formElement(type='date' name='date_of_birth' value=(undefined===director ? '' : director.form_update_date_of_birth) )
+      label(class="formLabel" for='image_url') Actor Image URL:
+      input#image_url.formElement(type='text' placeholder='https://googleImage.com/actor.jpg' name='image_url' value=(undefined===director ? '' : director.image_url) )
+    if errors
+      for error in errors
+        div(class="error")!= error.msg
+    button.buttonMenu(id="formBtn" type='submit') Submit
